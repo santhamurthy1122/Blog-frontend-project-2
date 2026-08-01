@@ -1,5 +1,5 @@
 # BlogProject - Frontend
-This project is the frontend code of [BlogProject](https://github.com/VonHumbolt/BlogProject). It uses React and Javascript for frontend.
+This project is the frontend code of [BlogProject](https://github.com/santhamurthy1122/Blog-frontend-project-2). It uses React and Javascript for frontend.
 
 ## Live Code is Here. Try it now! -> [Blog-App](https://blog-frontend-project-zeta.vercel.app/)
 
@@ -80,7 +80,7 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+See the section about [deployment](https://vercel.com/forme3/blog-frontend-project/CZtT7aiv7GNkLyNWNvFz4Zzix2kS) for more information.
 
 ### `npm run eject`
 
