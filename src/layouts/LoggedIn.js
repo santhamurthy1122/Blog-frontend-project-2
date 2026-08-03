@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link, useNavigate} from "react-router-dom"
-import { useSelector } from 'react-redux/es/exports'
+import { useSelector } from 'react-redux'
 
 export default function LoggedIn(props) {
   // const user = useSelector(state => state.user)
