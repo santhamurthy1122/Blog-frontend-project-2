@@ -111,11 +111,11 @@ export default function Posts() {
                                         <Link style={{textDecoration:"none"}}
                                             to={`/profile/${post?.author?.userId}`}>
                                         
-                                        {" " + post?.author?.firstName + " " + post?.author?.lastName + " "}
+                                        {" " + post?.author?.name + " "}
                                         
                                         </Link>
                                     </a>
-                                on {convertDate(post?.publishedDate)}
+                                on {convertDate(post?.date)}
                             </p>
                             <hr className="my-4" />
                         </div>
