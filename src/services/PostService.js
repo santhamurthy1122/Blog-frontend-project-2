@@ -12,7 +12,7 @@ const samplePosts = [
     id: 2,
     title: "Why CSS Grid Changed Everything",
     author: { id: 1, name: "Santhamurthy" },
-    date: ""2026-08-01",
+    date: "2026-08-01",
     content: "Grid layout makes complex, responsive designs simple. Here's why it replaced float-based layouts for good.",
     likeCount: 8,
     imageUrl: "https://via.placeholder.com/600x300"
