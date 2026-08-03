@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate,Link } from "react-router-dom";
 import LoggedIn from './LoggedIn'
 import LoggedOut from './LoggedOut'
-import { useSelector } from 'react-redux/es/hooks/useSelector';
-import { useDispatch } from "react-redux/es/hooks/useDispatch";
+import { useSelector, useDispatch } from 'react-redux';
 import {removeUserToRedux} from "../store/actions/userActions";
 
 export default function Navbar() {
