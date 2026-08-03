@@ -3,7 +3,7 @@ const samplePosts = [
     id: 1,
     title: "Getting Started with JavaScript",
     author: { id: 1, name: "Santhamurthy" },
-    date: "2026-07-01",
+    date: "2026-08-02",
     content: "A beginner-friendly walkthrough of JS fundamentals, covering variables, functions, and how the language actually runs in the browser.",
     likeCount: 12,
     imageUrl: "https://via.placeholder.com/600x300"
@@ -12,7 +12,7 @@ const samplePosts = [
     id: 2,
     title: "Why CSS Grid Changed Everything",
     author: { id: 1, name: "Santhamurthy" },
-    date: "2026-07-10",
+    date: ""2026-08-01",
     content: "Grid layout makes complex, responsive designs simple. Here's why it replaced float-based layouts for good.",
     likeCount: 8,
     imageUrl: "https://via.placeholder.com/600x300"
@@ -21,7 +21,7 @@ const samplePosts = [
     id: 3,
     title: "Understanding Async/Await",
     author: { id: 1, name: "Santhamurthy" },
-    date: "2026-07-20",
+    date: "2026-08-01",
     content: "Promises made simple with async/await syntax. A practical guide to writing cleaner asynchronous JavaScript.",
     likeCount: 20,
     imageUrl: "https://via.placeholder.com/600x300"
