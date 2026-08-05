@@ -1,8 +1,10 @@
 import axios from "axios";
 
-export default class AuthorService{
+const BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
-    url =  "https://blog-app-spring-project.herokuapp.com/api/v1/authors/";
+export default class AuthorService {
+
+    url = `${BASE_URL}/api/v1/authors/`;
 
     getall() {
         return axios.get(this.url + "getall");
@@ -11,5 +13,4 @@ export default class AuthorService{
     getById(authorId) {
         return axios.get(this.url + "getById/" + authorId);
     }
-
 }

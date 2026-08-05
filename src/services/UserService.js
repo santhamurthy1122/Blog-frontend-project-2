@@ -1,11 +1,13 @@
 import axios from "axios";
 
+const BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 export default class UserService {
 
-    url = "https://blog-app-spring-project.herokuapp.com/api/v1/users/";
-    
+    url = `${BASE_URL}/api/v1/users/`;
+
     getUserByEmail(email){
-        return axios.get(this.url + "getByEmail/" + email)
+        return axios.get(this.url + "getByEmail/" + email);
     }
 
     updateUser(userId, user, token) {
@@ -13,9 +15,8 @@ export default class UserService {
             headers: {
                 "Authorization": token
             }
-        })
+        });
     }
-
 
     likePost(postId, userId, token) {
         return axios.post(this.url + "like/" + postId + "/" + userId, null, {
