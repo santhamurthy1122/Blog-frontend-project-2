@@ -1,6 +1,5 @@
-import React, {useState, useEffect} from 'react'
-import { useSelector } from 'react-redux'
-import { Route,Routes } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { Route, Routes } from 'react-router-dom'
 import CreatePost from '../pages/CreatePost'
 import EditPost from '../pages/EditPost'
 import ErrorPage from '../pages/ErrorPage'
@@ -9,17 +8,11 @@ import Login from '../pages/Login'
 import PostDetail from '../pages/PostDetail'
 import Posts from '../pages/Posts'
 import Profile from '../pages/Profile'
-import ProtectedRoute from '../pages/ProtectedRoute'
 import Register from '../pages/Register'
 
 export default function Dashboard() {
-
-  // const user = useSelector(state => state.user)
   const [user, setUser] = useState()
-
-  useEffect(() => {
-    setUser(JSON.parse( localStorage.getItem("user")))
-  }, [])
+  useEffect(() => { setUser(JSON.parse(localStorage.getItem('user'))) }, [])
 
   return (
     <div>

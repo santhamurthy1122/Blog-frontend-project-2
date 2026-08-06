@@ -1,88 +1,56 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-body {
-  background: linear-gradient(135deg, #eef2ff 0%, #f8fafc 100%);
-  min-height: 100vh;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-.half {
-  min-height: 100vh;
-}
-
-.contents {
-  width: 100%;
-}
-
-.masthead {
-  min-height: 100vh;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.contents .container {
-  padding: 40px 20px;
-}
-
-.contents h1 {
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: #1e293b;
-}
-
-.form-control {
-  border-radius: 8px;
-  padding: 12px 16px;
-  border: 1px solid #d1d5db;
-  margin-bottom: 4px;
-}
-
-.form-control:focus {
-  border-color: #4f46e5;
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
-  outline: none;
-}
-
-.btn-primary {
-  background-color: #4f46e5;
-  border-color: #4f46e5;
-  border-radius: 8px;
-  padding: 12px 20px;
-  font-weight: 600;
-  width: 100%;
-}
-
-.btn-primary:hover {
-  background-color: #4338ca;
-  border-color: #4338ca;
-}
-
-.lead {
-  color: #4f46e5;
-  cursor: pointer;
-  margin: 16px 0;
-}
-
-.lead:hover {
-  text-decoration: underline;
-}
-
-@media (min-width: 768px) {
-  .half {
-    display: flex;
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #0F172A;
+    color: #F8FAFC;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
   }
-  .half > div {
-    flex: 1;
+  a { color: inherit; text-decoration: none; }
+}
+
+@layer components {
+  /* Prose for CKEditor HTML content */
+  .prose-content { @apply text-slate-200 leading-8 text-[1.05rem]; }
+  .prose-content h1 { @apply font-heading text-3xl font-bold text-white mt-10 mb-4; }
+  .prose-content h2 { @apply font-heading text-2xl font-semibold text-white mt-8 mb-3; }
+  .prose-content h3 { @apply font-heading text-xl font-semibold text-white mt-6 mb-2; }
+  .prose-content p  { @apply mb-5; }
+  .prose-content a  { @apply text-amber-400 hover:text-amber-300 underline; }
+  .prose-content ul { @apply mb-5 pl-6 list-disc; }
+  .prose-content ol { @apply mb-5 pl-6 list-decimal; }
+  .prose-content li { @apply mb-1.5; }
+  .prose-content blockquote {
+    @apply border-l-4 border-amber-500 pl-5 italic text-slate-300 my-6 bg-slate-800/60 py-3 pr-3 rounded-r-lg;
+  }
+  .prose-content img  { @apply rounded-xl my-6 max-w-full shadow-lg; }
+  .prose-content code { @apply bg-slate-700 px-1.5 py-0.5 rounded text-amber-300 text-sm font-mono; }
+  .prose-content pre  { @apply bg-slate-800 p-4 rounded-xl overflow-x-auto my-6 border border-slate-700; }
+  .prose-content pre code { @apply bg-transparent p-0; }
+  .prose-content strong { @apply text-white font-semibold; }
+  .prose-content em    { @apply italic; }
+  .prose-content hr    { @apply border-slate-700 my-8; }
+  .prose-content table { @apply w-full border-collapse my-6; }
+  .prose-content th    { @apply bg-slate-700 px-4 py-2 text-left font-semibold border border-slate-600; }
+  .prose-content td    { @apply px-4 py-2 border border-slate-700; }
+  .prose-content figure { @apply my-6; }
+
+  /* CKEditor light wrapper */
+  .ck-editor-wrapper .ck.ck-editor { @apply rounded-xl overflow-hidden; }
+  .ck-editor-wrapper .ck.ck-editor__editable_inline {
+    min-height: 400px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #1e293b;
   }
 }

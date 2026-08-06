@@ -1,88 +1,93 @@
 import React from 'react'
-import { Link,useNavigate, Outlet } from 'react-router-dom';
-import image from "../images/register_black.jpg";
-import { Formik, Form } from 'formik';
-import * as yup from "yup";
-import KaanKaplanTextInput from '../utils/customFormItems/KaanKaplanTextInput';
-import AuthService from '../services/AuthService';
+import { Link, useNavigate } from 'react-router-dom'
+import { motion } from 'framer-motion'
+import { Formik, Form } from 'formik'
+import * as yup from 'yup'
+import { FiUserPlus, FiCheckCircle } from 'react-icons/fi'
+import KaanKaplanTextInput from '../utils/customFormItems/KaanKaplanTextInput'
+import AuthService from '../services/AuthService'
 
 export default function Register() {
+  const authService = new AuthService()
+  const navigate    = useNavigate()
 
-  const authService = new AuthService();
-  const navigate = useNavigate();
-  
-  const initValues = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: ""
-  }
-
+  const initValues = { firstName: '', lastName: '', email: '', password: '' }
   const validationSchema = yup.object({
-    firstName: yup.string().required("Please enter your name"),
-    lastName: yup.string().required("Please fill this field"),
-    email: yup.string().email("Email address must be valid").required("Please enter your email address"),
-    password: yup.string().required("Please enter a password")
+    firstName: yup.string().required('Please enter your first name'),
+    lastName:  yup.string().required('Please enter your last name'),
+    email:     yup.string().email('Must be a valid email').required('Please enter your email'),
+    password:  yup.string().min(6, 'Password must be at least 6 characters').required('Please enter a password'),
   })
 
   return (
-    <div className="d-md-flex half  mt-md-5 mt-lg-0 align-items-center">
-    <div className="masthead bg order-md-1 order-sm-1"> <img className="img img-fluid d-none d-sm-block" src={image} onClick={() => navigate("/")} style={{width:"100vh"}} alt="Blog Imnage" />  </div>
-    <div className="contents order-md-2 order-sm-2">
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-md-7 mt-3 ">
-            <div className="mb-4">
-              <h1>Register Now</h1>
-              <p className="mb-4">
-                Create an account to become an author. Explore articles and write posts.
-              </p>
-            </div>
-            <Formik 
-              initialValues={initValues}
-              validationSchema={validationSchema}
-              onSubmit={(values) => {
-                authService.register(values).then(result => {
-                    navigate("/login/first")
-                  }).catch(error => {
-                    
-                  })
-              }}
-            >
-              <Form>
-                  <div className="mb-2">
-                    <KaanKaplanTextInput name="firstName" type="text" className="form-control" id="firstName" placeholder="First Name" />
-                  </div>
-                  <div className="mb-2">
-                    <KaanKaplanTextInput name="lastName" type="text" className="form-control" id="lastName" placeholder='Last Name' />
-                  </div>
-                  <div className="mb-2">
-                    <KaanKaplanTextInput name="email" type="email" className="form-control" id="email" placeholder='Email' />
-                  </div>
-                  <div className="mb-2">
-                    <KaanKaplanTextInput name="password" type="password" className="form-control" id="password" placeholder="Password" />
-                  </div>
-                  <Link to="/login">
-                    <p className='lead'> <u> Already have an account</u>?  Login now  </p>
-                  </Link>
-                  <div className="d-grid gap-2 col-6 mx-auto">
-                    
-                    <input
-                      type="submit"
-                      value="Sign Up"
-                      className="btn btn-block btn-primary"
-                  />
-                  </div>
+    <div className="min-h-screen bg-slate-900 flex">
+      {/* Left panel */}
+      <div className="hidden lg:flex flex-col justify-center w-5/12 bg-gradient-to-br from-slate-800 to-slate-900 border-r border-slate-700/40 p-12">
+        <Link to="/" className="font-heading text-3xl font-bold text-white mb-12">
+          Blog<span className="text-amber-500">.</span>
+        </Link>
+        <h2 className="font-heading text-4xl font-bold text-white mb-4 leading-tight">
+          Join the writing community
+        </h2>
+        <p className="text-slate-400 text-lg leading-relaxed mb-10">
+          Create an account in seconds and start sharing your knowledge with the world.
+        </p>
+        <ul className="space-y-3 text-slate-400 text-sm">
+          {['Publish unlimited posts', 'Connect with readers', 'Track your likes and followers'].map(t => (
+            <li key={t} className="flex items-center gap-2.5">
+              <FiCheckCircle className="text-amber-500 flex-shrink-0" size={16} />
+              {t}
+            </li>
+          ))}
+        </ul>
+      </div>
 
+      {/* Right panel – form */}
+      <div className="flex-1 flex flex-col items-center justify-center p-6 sm:p-12">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}
+          className="w-full max-w-sm"
+        >
+          <Link to="/" className="font-heading text-2xl font-bold text-white lg:hidden mb-8 block">
+            Blog<span className="text-amber-500">.</span>
+          </Link>
 
-              </Form>
-             
-            </Formik>
-          </div>
-        </div>
+          <h1 className="font-heading text-3xl font-bold text-white mb-1">Create Account</h1>
+          <p className="text-slate-400 text-sm mb-8">
+            Already have an account?{' '}
+            <Link to="/login" className="text-amber-400 hover:text-amber-300 font-medium transition-colors">
+              Sign in
+            </Link>
+          </p>
+
+          <Formik
+            initialValues={initValues}
+            validationSchema={validationSchema}
+            onSubmit={(values) => {
+              authService.register(values)
+                .then(() => navigate('/login/first'))
+                .catch(() => {})
+            }}
+          >
+            <Form className="space-y-4">
+              <div className="grid grid-cols-2 gap-3">
+                <KaanKaplanTextInput name="firstName" type="text" placeholder="First name" />
+                <KaanKaplanTextInput name="lastName"  type="text" placeholder="Last name" />
+              </div>
+              <KaanKaplanTextInput name="email"    type="email"    placeholder="Email address" />
+              <KaanKaplanTextInput name="password" type="password" placeholder="Password" />
+
+              <motion.button
+                type="submit"
+                whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.97 }}
+                className="w-full flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold py-3 rounded-xl transition-all shadow-lg shadow-amber-500/20 mt-2"
+              >
+                <FiUserPlus size={17} /> Create Account
+              </motion.button>
+            </Form>
+          </Formik>
+        </motion.div>
       </div>
     </div>
-    <Outlet />
-  </div>
   )
 }
